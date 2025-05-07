@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Verivis Waitlist</title>
+  <style>
+    :root {
+      --primary-color: #00f7ff;
+      --secondary-color: #00f7ff;
+      --accent-color: #00f7ff;
+      --text-color: #E0E0E0;
+      --light-text: #AAAAAA;
+      --bg-color: #121212;
+      --card-bg: #1E1E1E;
+      --border-color: #333333;
+      --neon-color: #00f7ff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #121212, #1a1a1a);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .floating-shapes {
+      display: none;
+    }
+    
+    .shape {
+      display: none;
+    }
+    
+    .shape1 {
+      top: 10%;
+      left: 5%;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      animation: float 20s infinite alternate;
+      opacity: 0.15;
+    }
+    
+    .shape2 {
+      bottom: 10%;
+      right: 5%;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
+      animation: float 15s infinite alternate-reverse;
+      opacity: 0.15;
+    }
+    
+    .shape3 {
+      top: 60%;
+      left: 15%;
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(220deg, var(--accent-color), var(--primary-color));
+      animation: float 25s infinite alternate;
+      opacity: 0.15;
+    }
+    
+    .shape4 {
+      top: 20%;
+      right: 15%;
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+      animation: float 18s infinite alternate-reverse;
+      opacity: 0.15;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(30px, 30px) rotate(15deg);
+      }
+    }
+    
+    .form-container {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(108, 99, 255, 0.2);
+    }
+    
+    .form-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--neon-color);
+      box-shadow: 0 0 15px rgba(0, 247, 255, 0.8);
+    }
+    
+    .logo-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--neon-color);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(0, 247, 255, 0.6);
+    }
+    
+    .tagline {
+      font-size: 1rem;
+      color: var(--light-text);
+    }
+    
+    .waitlist-form {
+      margin-top: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--neon-color);
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background-color: #2D2D2D;
+      color: var(--text-color);
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--neon-color);
+      box-shadow: 0 0 8px rgba(0, 247, 255, 0.4);
+    }
+    
+    .required::after {
+      content: "*";
+      color: var(--accent-color);
+      margin-left: 4px;
+    }
+    
+    /* Updated submit button style to match the image */
+    .submit-btn {
+      background-color: transparent;
+      color: var(--neon-color);
+      font-weight: 600;
+      border: 2px solid var(--neon-color);
+      border-radius: 30px;
+      padding: 0.85rem 1.5rem;
+      font-size: 1rem;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
+    }
+    
+    .submit-btn:hover {
+      background-color: rgba(0, 247, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 247, 255, 0.6);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(2px);
+    }
+    
+    .success-message {
+      display: none;
+      background-color: rgba(72, 187, 120, 0.1);
+      border: 1px solid rgba(72, 187, 120, 0.3);
+      color: #4ADE80;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    
+    .error-message {
+      display: none;
+      background-color: rgba(245, 0, 87, 0.1);
+      border: 1px solid rgba(245, 0, 87, 0.3);
+      color: #FF4081;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    
+    .domain-selection {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .domain-option {
+      position: relative;
+    }
+    
+    .domain-option input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    .domain-label {
+      display: block;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      background-color: #2D2D2D;
+    }
+    
+    .domain-option input:checked + .domain-label {
+      border-color: var(--neon-color);
+      background-color: rgba(0, 247, 255, 0.1);
+      box-shadow: 0 0 8px rgba(0, 247, 255, 0.4);
+      color: var(--neon-color);
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem 0;
+      color: var(--light-text);
+      font-size: 0.9rem;
+    }
+    
+    .footer-link {
+      color: var(--neon-color);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .footer-link:hover {
+      color: var(--neon-color);
+      text-shadow: 0 0 8px rgba(0, 247, 255, 0.8);
+    }
+    
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 2rem 1.5rem;
+      }
+      
+      .domain-selection {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Adding keyframe animation for success message */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .show-message {
+      display: block;
+      animation: fadeIn 0.5s ease forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="logo-section">
+        <h1 class="logo">VERIVIS</h1>
+        <p class="tagline">Decentralized Intelligence, Personalized for You</p>
+      </div>
+      
+      <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--neon-color); text-shadow: 0 0 8px rgba(0, 247, 255, 0.5);">Join Our Waitlist</h2>
+      
+      <form id="waitlistForm" class="waitlist-form">
+        <!-- FormSubmit anti-spam field -->
+        <input type="hidden" name="_captcha" value="false">
+        
+        <div class="form-group">
+          <label for="name" class="required">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email" class="required">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label>I'm interested in these domains</label>
+          <div class="domain-selection">
+            <div class="domain-option">
+              <input type="checkbox" id="legal" name="domains" value="legal">
+              <label for="legal" class="domain-label">Legal</label>
+            </div>
+            <div class="domain-option">
+              <input type="checkbox" id="medical" name="domains" value="medical">
+              <label for="medical" class="domain-label">Medical</label>
+            </div>
+            <div class="domain-option">
+              <input type="checkbox" id="financial" name="domains" value="financial">
+              <label for="financial" class="domain-label">Financial</label>
+            </div>
+            <div class="domain-option">
+              <input type="checkbox" id="technical" name="domains" value="technical">
+              <label for="technical" class="domain-label">Technical</label>
+            </div>
+            <div class="domain-option">
+              <input type="checkbox" id="business" name="domains" value="business">
+              <label for="business" class="domain-label">Business & Startups</label>
+            </div>
+            <div class="domain-option">
+              <input type="checkbox" id="other" name="domains" value="other">
+              <label for="other" class="domain-label">Other</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="organization">Organization (Optional)</label>
+          <input type="text" id="organization" name="organization">
+        </div>
+        
+        <div class="form-group">
+          <label for="referral">How did you hear about us?</label>
+          <select id="referral" name="referral">
+            <option value="" selected disabled>Select an option</option>
+            <option value="social">Social Media</option>
+            <option value="friend">Friend or Colleague</option>
+            <option value="search">Search Engine</option>
+            <option value="event">Event or Conference</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Additional Comments (Optional)</label>
+          <textarea id="message" name="message" rows="3"></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">JOIN THE WAITLIST</button>
+      </form>
+      
+      <div class="success-message" id="successMessage">
+        <h3 style="margin-bottom: 0.5rem;">Thank you for joining our waitlist!</h3>
+        <p>We're excited to have you on board. We'll notify you when we launch.</p>
+      </div>
+      
+      <div class="error-message" id="errorMessage">
+        <h3 style="margin-bottom: 0.5rem;">Something went wrong</h3>
+        <p>Please try again or contact us at verivis.experts@gmail.com</p>
+      </div>
+    </div>
+    
+    <footer>
+      <p>&copy; 2025 Verivis. All rights reserved.</p>
+      <p>Contact: <a href="mailto:verivis.experts@gmail.com" class="footer-link">verivis.experts@gmail.com</a></p>
+    </footer>
+  </div>
+  
+  <script>
+    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const submitBtn = document.querySelector('.submit-btn');
+      
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      
+      // Convert form data to JSON object
+      const formDataObj = {};
+      formData.forEach((value, key) => {
+        // Handle checkboxes (domains)
+        if (key === 'domains') {
+          if (!formDataObj[key]) {
+            formDataObj[key] = [];
+          }
+          formDataObj[key].push(value);
+        } else {
+          formDataObj[key] = value;
+        }
+      });
+      
+      // Send data to FormSubmit.co
+      fetch('https://formsubmit.co/verivis.experts@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataObj)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response;
+      })
+      .then(() => {
+        // Handle success
+        document.getElementById('waitlistForm').style.display = 'none';
+        document.getElementById('successMessage').classList.add('show-message');
+        console.log('Waitlist form submitted successfully');
+      })
+      .catch(error => {
+        // Handle error
+        console.error('Error submitting form:', error);
+        document.getElementById('errorMessage').classList.add('show-message');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'JOIN THE WAITLIST';
+      });
+    });
+  </script>
+</body>
+</html>
